@@ -78,6 +78,38 @@ class AgedBrieHandler < BaseItemHandler
   end
 end
 
+class ItemMapper
+  attr_reader :item
+
+  MAP = {
+    'Aged Brie'                                 => AgedBrieHandler,
+    'Sulfuras, Hand of Ragnaros'                => SulfurasHandler,
+    'Backstage passes to a TAFKAL80ETC concert' => BackstagePassesHandler,
+    #'Conjured Mana Cake'                        => ConjuredManaCakeHandler,
+  }
+
+  def initialize(item)
+    @item = item
+  end
+
+  def update
+    handler.new(item).update
+  end
+
+  def self.update(item)
+    new(item).update
+  end
+
+  private
+
+  def handler
+    @handler ||= MAP[item.name] || DefaultItemHandler
+  end
+end
+
+
+
+
 
 class GildedRose
 
