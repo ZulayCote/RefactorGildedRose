@@ -57,6 +57,10 @@ class BackstagePassesHandler < BaseItemHandler
   end
 end
 
+class SulfurasHandler < BaseItemHandler
+end
+
+
 class GildedRose
 
   def update_quality(items)
