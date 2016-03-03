@@ -30,7 +30,6 @@ class DefaultItemHandler < BaseItemHandler
     else
       quality = item.quality - 2
     end
-
     item.quality = quality if quality >= 0
   end
 
