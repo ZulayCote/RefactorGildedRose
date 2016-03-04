@@ -60,9 +60,9 @@ describe 'GildedRose' do
       parametricTestCase("Backstage passes to a TAFKAL80ETC concert", 1, 10, 0, 13)
   end
 
-    #it 'Conjured Mana Cake Should Degrade Twice as fast as normal items before sell_in' do
-    #  parametricTestCase("Conjured Mana Cake", 1, 10, 0, 8)
-    #end
+   it 'Conjured Mana Cake Should Degrade Twice as fast as normal items before sell_in' do
+      parametricTestCase("Conjured Mana Cake", 1, 10, 0, 8)
+   end
 
     #it 'Conjured Wand item should degrade twice as fast as normal items' do
     #  parametricTestCase("Conjured Wand", 1, 10, 0, 8)
@@ -98,10 +98,11 @@ describe 'GildedRose' do
     #this conjured item does not work properly yet
     items.push Item.new "Conjured Mana Cake", 3, 6
 
-    app = GildedRose.new
+    #app = GildedRose.new
+    GildedRose.new(items).update_quality()
 
     #act
-    app.update_quality items;
+    #app.update_quality items;
 
      itemsOutput = []
     itemsOutput.push Item.new "+5 Dexterity Vest",9,19
@@ -130,9 +131,9 @@ describe 'GildedRose' do
     items = []
     items.push Item.new name, initialsell_in, initialQuality
 
-    app = GildedRose.new
-
-    app.update_quality items
+    #app = GildedRose.new
+    GildedRose.new(items).update_quality()
+    #app.update_quality items
 
     items[0].name.should == name
     items[0].quality.should == expectedQuality
