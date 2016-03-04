@@ -78,6 +78,20 @@ class AgedBrieHandler < BaseItemHandler
   end
 end
 
+class ConjuredManaCakeHandler < BaseItemHandler
+  private
+
+  def update_quality
+    quality = item.quality - 2
+    item.quality = quality if quality >= 0
+  end
+
+  def update_sell_in
+    item.sell_in -= 1
+  end
+end
+
+
 class ItemMapper
   attr_reader :item
 
@@ -85,7 +99,7 @@ class ItemMapper
     'Aged Brie'                                 => AgedBrieHandler,
     'Sulfuras, Hand of Ragnaros'                => SulfurasHandler,
     'Backstage passes to a TAFKAL80ETC concert' => BackstagePassesHandler,
-    #'Conjured Mana Cake'                        => ConjuredManaCakeHandler,
+    'Conjured Mana Cake'                        => ConjuredManaCakeHandler,
   }
 
   def initialize(item)

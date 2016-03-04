@@ -4,7 +4,7 @@ require './item'
 describe 'GildedRose' do
   it 'should degradated one unit in one item' do
     parametricTestCase("foo", 1, 1, 0, 0)
-  end 
+  end
 
   it 'should not update item with quaility of sixty' do
     parametricTestCase("foo", 1, 60, 0, 59)
@@ -59,7 +59,7 @@ describe 'GildedRose' do
    it 'backstage Passes Increases By 3 When Sell In Is One' do
       parametricTestCase("Backstage passes to a TAFKAL80ETC concert", 1, 10, 0, 13)
   end
-    
+
     #it 'Conjured Mana Cake Should Degrade Twice as fast as normal items before sell_in' do
     #  parametricTestCase("Conjured Mana Cake", 1, 10, 0, 8)
     #end
@@ -74,13 +74,13 @@ describe 'GildedRose' do
     #  parametricTestCase("Conjured Wand", 1, 10, 0, 8)
     #end
 
-    
+
     # a. Items conjured hasta 0 de calidad.
     #it 'Conjured item with quality 0 cant decrease its quality any more ' do
     #  parametricTestCase("Conjured Wand", 1, 0, 0, 0)
     #end
 
-    # b. 
+    # b.
     #it 'Conjured item with quality 1 shouldnt have a negative quality after one day' do
     #  parametricTestCase("Conjured Wand", 1, 1, 0, 0)
     #end
@@ -98,7 +98,7 @@ describe 'GildedRose' do
     #this conjured item does not work properly yet
     items.push Item.new "Conjured Mana Cake", 3, 6
 
-    app = GildedRose.new 
+    app = GildedRose.new
 
     #act
     app.update_quality items;
@@ -115,9 +115,9 @@ describe 'GildedRose' do
     #this conjured item does not work properly yet
     #itemsOutput.push Item.new "Conjured Mana Cake", 2, 4
 
-    
-         
-    (1..itemsOutput.size).each { |i| 
+
+
+    (1..itemsOutput.size).each { |i|
       itemsOutput[i-1].name.should == items[i-1].name
       itemsOutput[i-1].quality.should == items[i-1].quality
       itemsOutput[i-1].sell_in.should == items[i-1].sell_in
@@ -130,13 +130,13 @@ describe 'GildedRose' do
     items = []
     items.push Item.new name, initialsell_in, initialQuality
 
-    app = GildedRose.new 
+    app = GildedRose.new
 
     app.update_quality items
 
     items[0].name.should == name
     items[0].quality.should == expectedQuality
     items[0].sell_in.should == expectedsell_in
-    
-  end 
+
+  end
 end
